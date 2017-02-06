@@ -1,9 +1,15 @@
 #!/bin/bash
 
+REPO_NAME=louis-zend
+ACCOUNT_URL=226019795248.dkr.ecr.ap-southeast-2.amazonaws.com
+SERVICE_NAME=louis-zend
+TASK_FAMILY=louis-zend
+CLUSTER_NAME=louis-zend1
+
 function deploy {
     version=${1:-latest}
     echo deploy to ECS with version: $version
-    BUILD_NUMBER=$version SERVICE_NAME=php-service5 TASK_FAMILY=louis-php-task ./update-service.sh
+    CLUSTER_NAME=$CLUSTER_NAME BUILD_NUMBER=$version SERVICE_NAME=$SERVICE_NAME TASK_FAMILY=$TASK_FAMILY ./update-service.sh
 }
 
 function local_dev {
@@ -18,11 +24,11 @@ function build_push {
     version=${1:-latest}
     echo build and push image to ECS with version: $version
     echo version = $version
-    docker build -t louis-php --build-arg PHP_PROJECT_VER=$version . \
-    && docker tag louis-php:latest 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version \
-    && docker tag louis-php:latest 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:latest \
-    && docker push 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version \
-    && docker push 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:latest
+    docker build -t $REPO_NAME --build-arg PHP_PROJECT_VER=$version . \
+    && docker tag $REPO_NAME:latest $ACCOUNT_URL/$REPO_NAME:$version \
+    && docker tag $REPO_NAME:latest $ACCOUNT_URL/$REPO_NAME:latest \
+    && docker push $ACCOUNT_URL/$REPO_NAME:$version \
+    && docker push $ACCOUNT_URL/$REPO_NAME:latest
 }
 
 function unittest {

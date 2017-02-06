@@ -1,14 +1,14 @@
 {
     "networkMode": "bridge",
-    "family": "louis-php-task",
+    "family": "louis-zend",
     "volumes": [],
     "containerDefinitions": [
       {
         "memoryReservation": 200,
         "environment": [],
-        "name": "louis-php-container",
+        "name": "louis-zend-container",
         "mountPoints": [],
-        "image": "226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:%BUILD_NUMBER%",
+        "image": "226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-zend:1",
         "cpu": 0,
         "portMappings": [
           {
