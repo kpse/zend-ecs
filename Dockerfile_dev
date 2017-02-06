@@ -8,6 +8,7 @@ RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rew
 COPY deployment/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 ENV APACHE_LOG_DIR=/var/log/apache2/
+ENV APPLICATION_ENV=development
 
 ARG PHP_PROJECT_VER
 ENV PHP_PROJECT_VER=$PHP_PROJECT_VER
