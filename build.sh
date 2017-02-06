@@ -9,7 +9,7 @@ function deploy {
 function local_dev {
     version=${1:-local_dev}
     echo local_dev on version : $version
-    docker rm -f local_skeleton_dev_server
+    docker rm -f local_dev_skeleton_server
     docker build -t local_skeleton_dev -f $(pwd)/Dockerfile_dev --build-arg PHP_PROJECT_VER=$version . \
     && docker run -tid -p 80:80 --name="local_dev_skeleton_server" -v $(pwd):/var/www local_skeleton_dev
 }
