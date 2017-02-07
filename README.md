@@ -75,3 +75,9 @@ project and you should be ready to go! It should look something like below:
             Allow from all
         </Directory>
     </VirtualHost>
+
+Todos
+------------
+
+### dynamodb IAM role
+#### different tables cross environment
