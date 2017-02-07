@@ -11,3 +11,4 @@ vendor/
 !vendor/README.md
 !vendor/ZF2/
 louis-zend-v_*.json
+.aws/credentials

@@ -6,15 +6,19 @@ use Album\Form\AlbumForm;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Album\Model\Album;
-use Zend\Debug\Debug;
+use Album\Model\AlbumTable;
 
 
 class AlbumController extends AbstractActionController
 {
+	protected $showDB;
+
 	public function indexAction()
 	{
+		$albumTable = new AlbumTable();
+
 		return new ViewModel(array(
-			'albums' => array((object)array('id' => 1, 'artist' => 'suoqin', 'title' => 'php book'))
+			'albums' => $albumTable->fetchAll()
 		));
 	}
 
