@@ -4,7 +4,7 @@
     "volumes": [],
     "containerDefinitions": [
       {
-        "memoryReservation": 1000,
+        "memoryReservation": 200,
         "environment": [],
         "name": "louis-zend-container",
         "mountPoints": [],
