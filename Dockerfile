@@ -8,6 +8,7 @@ RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rew
 COPY deployment/000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN mkdir -p /var/www
 COPY . /var/www
+RUN rm -rf /var/www/.aws
 
 EXPOSE 80
 

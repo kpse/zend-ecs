@@ -1,7 +1,7 @@
 <?php
 
 $_SERVER['APPLICATION_ENV'] = getenv('APPLICATION_ENV');
-echo $_SERVER['APPLICATION_ENV'];
+//echo $_SERVER['APPLICATION_ENV'];
 /**
  * Display all errors when APPLICATION_ENV is development.
  */

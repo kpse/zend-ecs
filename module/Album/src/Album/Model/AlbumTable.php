@@ -51,11 +51,13 @@ class AlbumTable {
 		]);
 
 		$credentials = $result->get('Credentials');
-		return DynamoDbClient::factory(array(
+		return DynamoDbClient::factory([
 			'key'    => $credentials['AccessKeyId'],
 			'secret' => $credentials['SecretAccessKey'],
-			'token'  => $credentials['SessionToken']
-		));
+			'token'  => $credentials['SessionToken'],
+			'region'  => 'ap-southeast-2',
+		]
+	);
 	}
 
 
