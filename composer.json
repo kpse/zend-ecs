@@ -16,6 +16,7 @@
         "phpunit/phpunit": "4.8.27"
     },
     "autoload": {
-        "psr-0": { "Album": "module/Album/src/" }
+        "psr-0": { "Album": "module/Album/src/" },
+        "files": ["db/DbClient.php"]
     }
 }
