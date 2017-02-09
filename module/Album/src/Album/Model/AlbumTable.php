@@ -6,6 +6,8 @@ class AlbumTable {
 
 	protected $client;
 
+	const TABLE_NAME = 'louis-zend-album';
+
 	public function __construct()
 	{
 		$dbClient = new \DbClient;
@@ -15,7 +17,7 @@ class AlbumTable {
 	public function fetchAll()
 	{
 		$iterator = $this->client->getIterator('Scan', array(
-			'TableName' => 'louis-zend-album'
+			'TableName' => self::TABLE_NAME
 		));
 
 		return array_map(function($value) {
@@ -28,6 +30,17 @@ class AlbumTable {
 
 	}
 
+	public function save($album)
+	{
+		$this->client->putItem([
+			'TableName' => self::TABLE_NAME,
+			'Item' => [
+				'id' => ['S' => uniqid()],
+				'title'    => ['S' => $album->title],
+				'artist'   => ['S' => $album->artist]
+			]
+		]);
+	}
 
 
 }
