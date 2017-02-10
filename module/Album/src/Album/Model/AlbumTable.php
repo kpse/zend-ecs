@@ -35,11 +35,30 @@ class AlbumTable {
 		$this->client->putItem([
 			'TableName' => self::TABLE_NAME,
 			'Item' => [
-				'id' => ['S' => uniqid()],
+				'id' => ['S' => $album->id ?: uniqid()],
 				'title'    => ['S' => $album->title],
 				'artist'   => ['S' => $album->artist]
 			]
 		]);
+	}
+
+	public function get($id)
+	{
+		$result = $this->client->getItem(array(
+			'ConsistentRead' => true,
+			'TableName' => self::TABLE_NAME,
+			'Key'       => [
+				'id'   => ['S' => $id]
+			]
+		));
+		$value = $result['Item'];
+		$album = new Album();
+		$album->exchangeArray([
+			'id' => $value['id']['S'],
+			'artist' => $value['artist']['S'],
+			'title' => $value['title']['S'],
+		]);
+		return $album;
 	}
 
 
