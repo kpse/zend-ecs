@@ -61,5 +61,15 @@ class AlbumTable {
 		return $album;
 	}
 
+	public function remove($id)
+	{
+		$this->client->deleteItem([
+			'TableName' => self::TABLE_NAME,
+			'Key' => array(
+				'id'   => array('S' => $id)
+			)
+		]);
+	}
+
 
 }
