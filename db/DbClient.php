@@ -20,18 +20,18 @@ class DbClient
 	private function stsClient() {
 		$sts = StsClient::factory();
 
-		$result = $sts->assumeRole([
+		$result = $sts->assumeRole(array(
 			'RoleArn' => 'arn:aws:iam::226019795248:role/dynamodb_role', // REQUIRED
 			'RoleSessionName' => 'remote_dynamo_client', // REQUIRED
-		]);
+		));
 
 		$credentials = $result->get('Credentials');
-		return DynamoDbClient::factory([
+		return DynamoDbClient::factory(array(
 				'key'    => $credentials['AccessKeyId'],
 				'secret' => $credentials['SecretAccessKey'],
 				'token'  => $credentials['SessionToken'],
 				'region'  => 'ap-southeast-2',
-			]
+			)
 		);
 	}
 
