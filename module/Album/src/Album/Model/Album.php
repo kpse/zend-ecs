@@ -37,12 +37,6 @@ class Album
 			$inputFilter = new InputFilter();
 
 			$inputFilter->add(array(
-				'name' => 'id',
-				'required' => true,
-				'filters' => [],
-			));
-
-			$inputFilter->add(array(
 				'name' => 'artist',
 				'required' => true,
 				'filters' => array(
