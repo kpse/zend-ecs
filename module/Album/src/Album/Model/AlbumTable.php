@@ -35,7 +35,7 @@ class AlbumTable {
 		$this->client->putItem([
 			'TableName' => self::TABLE_NAME,
 			'Item' => [
-				'id' => ['S' => (string)$album->id ?: uniqid()],
+				'id' => ['S' => $album->id ?: uniqid()],
 				'title'    => ['S' => $album->title],
 				'artist'   => ['S' => $album->artist]
 			]
